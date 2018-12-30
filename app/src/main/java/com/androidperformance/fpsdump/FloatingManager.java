@@ -51,4 +51,6 @@ class FloatingManager {
         }
         return false;
     }
+
+
 }

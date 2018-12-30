@@ -1,6 +1,7 @@
 package com.androidperformance.fpsdump;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.os.Build;
 import android.os.Handler;
@@ -22,7 +23,6 @@ public class FloatingView extends FrameLayout {
     private Handler mainHandler;
     private Context mContext;
     private View mView;
-    private int mTouchStartX, mTouchStartY;
     private WindowManager.LayoutParams mParams;
     private FloatingManager mWindowManager;
     private FPSUtils mFpsUtils;
@@ -30,19 +30,19 @@ public class FloatingView extends FrameLayout {
     private Handler workHandler;
     private boolean working = false;
     private View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
+
         @Override
         public boolean onTouch(View view, MotionEvent event) {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
-                    mTouchStartX = (int) event.getRawX();
-                    mTouchStartY = (int) event.getRawY();
                     break;
                 case MotionEvent.ACTION_MOVE:
-                    mParams.x += (int) event.getRawX() - mTouchStartX;
-                    mParams.y += (int) event.getRawY() - mTouchStartY;
+                    mParams.x = (int) event.getRawX();
+                    mParams.y = (int) event.getRawY();
                     mWindowManager.updateView(mView, mParams);
                     break;
                 case MotionEvent.ACTION_UP:
+                case MotionEvent.ACTION_CANCEL:
                     break;
             }
             return true;
@@ -62,6 +62,7 @@ public class FloatingView extends FrameLayout {
         handlerThread.start();
         mainHandler = new Handler();
 
+        mFpsText.setOnTouchListener(mOnTouchListener);
 
         workHandler = new Handler(handlerThread.getLooper()) {
             @Override
@@ -79,7 +80,7 @@ public class FloatingView extends FrameLayout {
                             mainHandler.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    mFpsText.setText(String.format("fps = %s", mFpsUtils.getmFps()));
+                                    mFpsText.setText(String.format(" FPS = %s", mFpsUtils.getmFps()));
                                 }
                             });
                         }
@@ -123,5 +124,14 @@ public class FloatingView extends FrameLayout {
         workHandler.sendMessage(msg);
 
         mWindowManager.removeView(mView);
+    }
+
+
+    public void changeColor(boolean isChecked) {
+        if (isChecked) {
+            mFpsText.setTextColor(Color.WHITE);
+        } else {
+            mFpsText.setTextColor(Color.BLACK);
+        }
     }
 }

@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">FPSDump</string>
+    <string name="tex_fps_color_change">黑色/白色切换</string>
+    <string name="show_fps">显示 FPS 窗口</string>
+    <string name="hide_fps">隐藏 FPS 窗口</string>
 </resources>

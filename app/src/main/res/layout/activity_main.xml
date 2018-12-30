@@ -9,14 +9,20 @@
 
     <Button
         android:id="@+id/btn_show"
-        android:layout_width="wrap_content"
+        android:layout_width="258dp"
         android:layout_height="wrap_content"
-        android:text="show"/>
+        android:text="@string/show_fps" />
 
     <Button
         android:id="@+id/btn_hide"
-        android:layout_width="wrap_content"
+        android:layout_width="255dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="hide"/>
+        android:text="@string/hide_fps" />
+
+    <Switch
+        android:id="@+id/textColor"
+        android:layout_width="249dp"
+        android:layout_height="58dp"
+        android:text="@string/tex_fps_color_change" />
 </LinearLayout>
