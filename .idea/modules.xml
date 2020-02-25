@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Code-FPSDump.iml" filepath="$PROJECT_DIR$/Code-FPSDump.iml" group="FPSDump" />
       <module fileurl="file://$PROJECT_DIR$/FPSDump.iml" filepath="$PROJECT_DIR$/FPSDump.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/FPSDump-app.iml" filepath="$PROJECT_DIR$/app/FPSDump-app.iml" group="FPSDump/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

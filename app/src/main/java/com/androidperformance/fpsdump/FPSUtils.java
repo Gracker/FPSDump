@@ -32,7 +32,7 @@ class FPSUtils {
                 reply.recycle();
                 data.recycle();
             }
-        } catch (RemoteException e) {
+        } catch (RemoteException | SecurityException e) {
             return false;
         }
         return true;
